@@ -1,17 +1,18 @@
 package br.com.elderxavier.apivaleria.controller;
 
-import br.com.elderxavier.apivaleria.dao.UsuariosAdminDao;
 import br.com.elderxavier.apivaleria.model.UsuariosAdmin;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import br.com.elderxavier.apivaleria.repository.UsuariosAdminRepository;
 
 @RestController
+@RequestMapping("/usuario")
 public class AdminController {   
     
     @Autowired
-    UsuariosAdminDao repository;
+    UsuariosAdminRepository repository;
     
     @RequestMapping("/index")
     public String index() {                
@@ -26,10 +27,9 @@ public class AdminController {
         
     }    
     
-    @RequestMapping("/usuarios")
+    @RequestMapping("/listar")
     public List<UsuariosAdmin> usuario() {        
-        return repository.findAll();
-        
+        return repository.findAll();        
     }   
     
     
